@@ -774,8 +774,7 @@ Qualcomm®,Snapdragon™,Microsoft SQ2
     }
 
     Process {
-        $Result = $CheckName -split ' ' | ForEach-Object { $list | Where-Object -Property Modele -eq $_ }
-        if ($Result) {
+        if (($CheckName -split ' ' | ForEach-Object { $list | Where-Object -Property Modele -eq $_ })) {
 
             return $True
         }
