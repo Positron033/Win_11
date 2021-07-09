@@ -8,7 +8,7 @@ function _AchCheck {
 
 Process {
 
-    if ( $CheckArch -eq "64")
+    if ( $CheckArchCPU -eq "64" -and $CheckArchOS -eq "64 bits")
     
     
 }
