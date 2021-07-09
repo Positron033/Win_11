@@ -59,7 +59,7 @@ function _CheckNameCPU {
         #liste des processeurs compatible win 11
         $list = @(
             "AMD,AMD, 3015e",
-            "AMD, AMD,3020e",
+            "AMD,AMD,3020e",
             "AMD,Athlon™,Gold 3150C",
             "AMD,Athlon™,Gold 3150U",
             "AMD,Athlon™,Silver 3050C",
@@ -769,6 +769,7 @@ function _CheckNameCPU {
             "Qualcomm®,Snapdragon™,Snapdragon 8cx (Gen2)",
             "Qualcomm®,Snapdragon™,Microsoft SQ1",
             "Qualcomm®,Snapdragon™,Microsoft SQ2")
+            
     }
 
     Process {
