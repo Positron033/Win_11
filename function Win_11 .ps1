@@ -39,7 +39,7 @@ process {
 switch ($CheckBoot)
 
 "UEFI" { return $True}
-default { return $False
+default { return $False}
 
     }
 }
