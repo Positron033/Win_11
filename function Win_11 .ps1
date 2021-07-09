@@ -3,7 +3,8 @@ function _AchCheck {
     param (
 
     # architecture processeur       
-    $CheckArch = (Get-CimInstance -ClassName CIM_Processor).AddressWidth   
+    $CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth
+    $CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
 
 Process {
 
