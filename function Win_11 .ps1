@@ -810,3 +810,38 @@ function _CheckCPUCore {
         }
     }
 }
+
+function _CheckCpuspeed {
+
+    # recuperation de la vitesse du Cpu
+
+    param (
+
+        $CheckCpuSpeed = (Get-CimInstance -ClassName CIM_Processor).MaxClockSpeed
+    )
+
+    begin {
+
+        # convertion de la vitesse processeur
+        $CheckCpuSpeed = $CheckCpuSpeed / 1000
+        $CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
+
+    }
+
+    process {
+
+        if ($CheckCpuSpeed -gt 1) {
+
+            return $true
+            
+        }
+
+        else {
+    
+            return $false
+
+        }
+
+    }
+    
+}
