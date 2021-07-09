@@ -780,3 +780,18 @@ Process{
         return $False
     }
 }
+
+function _CheckCPUCore{
+   param(
+   #recuperation du nombres de coeur
+   $CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
+   )
+   
+   if($CheckCPUCores -lt 2) {
+    return $False
+    }
+   else{
+    return $True
+    }
+
+}
