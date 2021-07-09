@@ -2,37 +2,37 @@ function _AchCheck {
 
     param (
 
-        # architecture processeur       
+        # architecture processeur
         $CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
         # architecture OS
         $CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
-    
+
     )
 
     Process {
 
         if ($CheckArchCPU -eq "64" -and $CheckArchOS -eq "64 bits") {
-    
+
             return $True
         }
-    
+
         else {
-    
+
             return $False
-    
+
         }
     }
 }
 
 function _CheckBoot {
- 
+
     param(
- 
+
         # recuperation du type de bios
         $CheckBoot = $env:firmware_type
- 
+
     )
- 
+
     process {
 
         switch ($CheckBoot) {
@@ -54,7 +54,7 @@ function _CheckNameCPU {
 
     )
 
-    begin { 
+    begin {
 
         #liste des processeurs compatible win 11
         $list = @"
@@ -770,18 +770,18 @@ Qualcomm®,Snapdragon™,Snapdragon 8cx (Gen2)
 Qualcomm®,Snapdragon™,Microsoft SQ1
 Qualcomm®,Snapdragon™,Microsoft SQ2
 "@ | convertfrom-csv -Header Fabricant, Series, Modele
-            
+
     }
 
     Process {
         $Result = $CheckName -split ' ' | ForEach-Object { $list | Where-Object -Property Modele -eq $_ }
         if ($Result) {
-    
+
             return $True
         }
-    
+
         else {
-    
+
             return $False
         }
     }
@@ -790,24 +790,24 @@ Qualcomm®,Snapdragon™,Microsoft SQ2
 function _CheckCPUCore {
 
     param (
-   
+
         # recuperation du nombres de coeur
         $CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
-   
+
     )
 
     process {
-   
+
         if ($CheckCPUCores -lt 2) {
-   
+
             return $False
-    
+
         }
-    
+
         else {
-   
+
             return $True
-    
+
         }
     }
 }
@@ -834,15 +834,15 @@ function _CheckCpuspeed {
         if ($CheckCpuSpeed -gt 1) {
 
             return $true
-            
+
         }
 
         else {
-    
+
             return $false
 
         }
 
     }
-    
+
 }
