@@ -16,7 +16,7 @@ Process {
      return $True
 }
     
-    else if {
+    else {
     
     return $False
     
@@ -30,16 +30,18 @@ function _CheckBoot {
  param(
  
  # recuperation du type de bios
- $CheckBoot = env:firmware_type
+ $CheckBoot = $env:firmware_type
  
  )
  
 process {
 
-switch ($CheckBoot)
+switch ($CheckBoot){
 
 "UEFI" { return $True}
-default { return $False}
+default { return $False }
+
+        }
 
     }
 }
