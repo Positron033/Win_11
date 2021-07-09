@@ -6,6 +6,8 @@ function _AchCheck {
     $CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth;
     # architecture OS
     $CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
+    
+    )
 
 Process {
 
@@ -20,6 +22,3 @@ Process {
     
     }
 }
- 
-
-test-Win11
