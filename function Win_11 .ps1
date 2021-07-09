@@ -1,15 +1,10 @@
-function test-Win11 {
+function _AchCheck {
 
     param (
 
     # architecture processeur       
-    $CheckArch = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
-    # Type de bios
-    $CheckBoot = $env:firmware_type,
-    # info Cpu
-    $CheckCpu  = (Get-CimInstance -ClassName CIM_Processor)    
-
-    )
+    $CheckArch = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,    
+    
 
     begin {
 
@@ -39,29 +34,6 @@ Write-host = $Title -ForegroundColor Magenta
 
 Process {
 
-if ($Checkarch -eq 64) {        
-   
-            Write-Output $true
-    
-        }
-
-        else {
-            
-            Write-Output $false
-
-        }
-
-        if ($Checkboot -eq "UEFI"){
-
-            Write-Output $true
-        }
-
-        else {
-            
-            Write-Output $false
-        }
-        
-    }
     
 }
 
