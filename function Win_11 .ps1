@@ -44,3 +44,11 @@ default { return $False }
 
     }
 }
+
+function _CheckNameCPU {
+
+param(
+#recuperation du nom du processeur
+$CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
+
+)
