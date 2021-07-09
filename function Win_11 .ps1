@@ -65,4 +65,4 @@ if ($Checkarch -eq 64) {
     
 }
 
-Win_11
+test-Win11
