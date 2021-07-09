@@ -1,4 +1,4 @@
-function Win_11 {
+function test-Win11 {
 
     param (
 
