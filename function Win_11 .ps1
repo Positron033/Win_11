@@ -811,7 +811,7 @@ function _CheckCPUCore {
     }
 }
 
-function _CheckCpuspeed {
+function _CheckCpuSpeed {
 
     # recuperation de la vitesse du Cpu
 
