@@ -770,3 +770,13 @@ $list = @(
     "Qualcomm®,Snapdragon™,Microsoft SQ1"
     "Qualcomm®,Snapdragon™,Microsoft SQ2")
 }
+
+Process{
+
+    if($CheckName -in $list) {
+        return $True
+    }
+    else {
+    return $False
+    }
+}
