@@ -25,7 +25,6 @@ Process {
 }
 
 function _CheckBoot {
-
  
  param(
  
