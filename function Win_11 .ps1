@@ -20,6 +20,16 @@ Process {
     
     return $False
     
-    }
+     }
+   }
 }
+
+function _CheckBoot {
+
+ # recuperation du type de bios
+process {
+
+$CheckBoot = env:firmware_type
+
+    }
 }
