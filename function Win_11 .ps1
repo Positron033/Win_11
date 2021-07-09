@@ -9,9 +9,17 @@ function _AchCheck {
 
 Process {
 
-    if ( ($CheckArchCPU -eq "64") -and ($CheckArchOS -eq "64 bits"))
+    if ($CheckArchCPU -eq "64" -and $CheckArchOS -eq "64 bits") {
     
-    
+     return $True
 }
+    
+    else if {
+    
+    return $False
+    
+    }
+}
+ 
 
 test-Win11
