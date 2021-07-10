@@ -852,7 +852,6 @@ function _CheckDirectX {
     param (
      
         # declaration fichier temporaire dans variable
-
         $Tempfile = $env:TEMP
 
     )
