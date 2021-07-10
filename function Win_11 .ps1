@@ -902,7 +902,7 @@ function _CheckMem {
     
 }
 
-function _CheckSecureboot {
+function _CheckSecureBoot {
     param (
         # recuperation secureboot dans bdr (a controler)
 
@@ -914,7 +914,7 @@ function _CheckSecureboot {
     Process {
 
 
-        if ($CheckSecureBoot - "UEFISecureBootEnabled") {
+        if ($CheckSecureBoot -eq "UEFISecureBootEnabled") {
 
             return $True
             
@@ -923,7 +923,7 @@ function _CheckSecureboot {
         else {
             
             return $False
-            
+
         }
     }
 
