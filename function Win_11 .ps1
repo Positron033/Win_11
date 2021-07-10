@@ -774,6 +774,7 @@ Qualcomm®,Snapdragon™,Microsoft SQ2
     }
 
     Process {
+        
         if (($CheckName -split ' ' | ForEach-Object { $list | Where-Object -Property Modele -eq $_ })) {
 
             return $True
@@ -842,6 +843,43 @@ function _CheckCpuSpeed {
 
         }
 
+    }
+    
+}
+
+function _CheckDirectX {
+
+    param (
+     
+        # declaration fichier temporaire dans variable
+
+        $Tempfile = $env:TEMP
+
+    )
+
+    begin {
+
+        # recuperation de la version de directx a partir de dxdiag dans un fichier temporaire
+        start-process -FilePath "C:\windows\system32\dxdiag.exe" -ArgumentList "/dontskip /whql:off /t $tempfile\dxdiag.txt"
+        $directx = (get-content -Path $env:TEMP\dxdiag.txt) 
+        $directx = $directx[16]
+
+    }
+
+    process {
+
+        if ((test-path $env:TEMP\dxdiag.txt) -and ($directx.Contains('12'))) {
+
+            return $true
+            
+        }
+
+        else {
+            
+            return $false
+
+        }
+         
     }
     
 }
