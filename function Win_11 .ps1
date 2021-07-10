@@ -1,8 +1,8 @@
 function _AchCheck {
 
-    param (
+    Param (
 
-        # architecture processeur
+        # architecture Processeur
         $CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
         # architecture OS
         $CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
@@ -26,14 +26,14 @@ function _AchCheck {
 
 function _CheckBoot {
 
-    param(
+    Param(
 
         # recuperation du type de bios
         $CheckBoot = $env:firmware_type
 
     )
 
-    process {
+    Process {
 
         switch ($CheckBoot) {
 
@@ -47,16 +47,16 @@ function _CheckBoot {
 
 function _CheckNameCPU {
 
-    param(
+    Param(
 
-        #recuperation du nom du processeur
+        #recuperation du nom du Processeur
         $CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
 
     )
 
-    begin {
+    Begin {
 
-        #liste des processeurs compatible win 11
+        #liste des Processeurs compatible win 11
         $list = @"
 AMD,AMD,3015e
 AMD,AMD,3020e
@@ -789,14 +789,14 @@ Qualcomm®,Snapdragon™,Microsoft SQ2
 
 function _CheckCPUCore {
 
-    param (
+    Param (
 
         # recuperation du nombres de coeur
         $CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
 
     )
 
-    process {
+    Process {
 
         if ($CheckCPUCores -lt 2) {
 
@@ -816,30 +816,30 @@ function _CheckCpuSpeed {
 
     # recuperation de la vitesse du Cpu
 
-    param (
+    Param (
 
         $CheckCpuSpeed = (Get-CimInstance -ClassName CIM_Processor).MaxClockSpeed
     )
 
-    begin {
+    Begin {
 
-        # convertion de la vitesse processeur
+        # convertion de la vitesse Processeur
         $CheckCpuSpeed = $CheckCpuSpeed / 1000
         $CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
 
     }
 
-    process {
+    Process {
 
         if ($CheckCpuSpeed -gt 1) {
 
-            return $true
+            return $True
 
         }
 
         else {
 
-            return $false
+            return $False
 
         }
 
@@ -849,20 +849,55 @@ function _CheckCpuSpeed {
 
 function _CheckDirectX {    
     
-    process {
+    Process {
 
         if (Test-Path C:\Windows\System32\D3D12Core.dll) {
 
-            return $true
+            return $True
             
         }
 
         else {
             
-            return $false
+            return $False
 
         }
          
+    }
+    
+}
+
+function _CheckMem {
+
+    Param (
+        
+        # recuperation taille memoire ram
+
+        $CheckRam = (get-ciminstance -ClassName CIM_ComputerSystem).TotalPhysicalMemory / 1gb    
+
+    )
+
+    Begin {
+
+        # arrondi de la variable
+
+        $CheckRam = [math]::Round($CheckRam, 1)
+
+    }
+
+    Process {
+
+        if ($CheckRam -gt 4) {
+
+            return $True
+            
+        }
+
+        else {
+            
+            return $False
+        }
+
     }
     
 }
