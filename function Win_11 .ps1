@@ -905,6 +905,7 @@ function _CheckMem {
 function _CheckSecureBoot {
 
     param (
+
         # recuperation secureboot dans bdr (a controler)
 
         $CheckSecureBoot = (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
