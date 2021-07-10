@@ -903,11 +903,11 @@ function _CheckMem {
 }
 
 function _CheckSecureBoot {
+
     param (
         # recuperation secureboot dans bdr (a controler)
 
         $CheckSecureBoot = (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
-
 
     )
 
@@ -927,4 +927,29 @@ function _CheckSecureBoot {
         }
     }
 
+}
+
+function _CheckDisk {
+
+    param (
+
+        # recuperation taille disque
+        $CheckDisk = ((Get-Disk | Where-Object IsSystem -eq True).Size) / 1gb
+    )
+
+    Process {
+
+        if ($CheckDisk -gt 64) {
+
+            return $True
+    
+        }
+
+        else {
+            
+            return $false
+
+        }
+    }
+    
 }
