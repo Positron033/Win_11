@@ -873,7 +873,7 @@ function _CheckMem {
         
         # recuperation taille memoire ram
 
-        $CheckRam = (get-ciminstance -ClassName CIM_ComputerSystem).TotalPhysicalMemory / 1gb    
+        $CheckMem = (get-ciminstance -ClassName CIM_ComputerSystem).TotalPhysicalMemory / 1gb    
 
     )
 
@@ -881,13 +881,13 @@ function _CheckMem {
 
         # arrondi de la variable
 
-        $CheckRam = [math]::Round($CheckRam, 1)
+        $CheckMem = [math]::Round($CheckRam, 1)
 
     }
 
     Process {
 
-        if ($CheckRam -gt 4) {
+        if ($CheckMem -gt 4) {
 
             return $True
             
