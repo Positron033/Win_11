@@ -956,6 +956,7 @@ function _CheckDisk {
 }
 
 function _CheckTpm {
+    
     param (
         
         $CheckTpm = (Get-Tpm)
