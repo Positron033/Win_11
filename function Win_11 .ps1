@@ -815,7 +815,6 @@ function _CheckCPUCore {
 function _CheckCpuSpeed {
 
     # recuperation de la vitesse du Cpu
-
     Param (
 
         $CheckCpuSpeed = (Get-CimInstance -ClassName CIM_Processor).MaxClockSpeed
@@ -872,7 +871,6 @@ function _CheckMem {
     Param (
         
         # recuperation taille memoire ram
-
         $CheckMem = (get-ciminstance -ClassName CIM_ComputerSystem).TotalPhysicalMemory / 1gb    
 
     )
@@ -880,7 +878,6 @@ function _CheckMem {
     Begin {
 
         # arrondi de la variable
-
         $CheckMem = [math]::Round($CheckRam, 1)
 
     }
@@ -904,10 +901,9 @@ function _CheckMem {
 
 function _CheckSecureBoot {
 
-    param (
+    Param (
 
         # recuperation secureboot dans bdr (a controler)
-
         $CheckSecureBoot = (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
 
     )
@@ -932,7 +928,7 @@ function _CheckSecureBoot {
 
 function _CheckDisk {
 
-    param (
+    Param (
 
         # recuperation taille disque
         $CheckDisk = ((Get-Disk | Where-Object IsSystem -eq True).Size) / 1gb
@@ -956,9 +952,10 @@ function _CheckDisk {
 }
 
 function _CheckTpm {
-    
-    param (
+
+    Param (
         
+        # recuperation tpm
         $CheckTpm = (Get-Tpm)
 
     )
