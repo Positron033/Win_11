@@ -1,4 +1,4 @@
-function _AchCheck {
+function _ArchCheck {
 
     Param (
 
