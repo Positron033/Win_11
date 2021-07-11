@@ -954,3 +954,20 @@ function _CheckDisk {
     }
     
 }
+
+function _CheckTpm {
+    param (
+        
+        $CheckTpm = (Get-Tpm)
+
+    )
+
+    switch ($CheckTpm) {
+
+        { $CheckTpm.TpmPresent -eq $True } { return $True }
+        { $CheckTpm.tpmEnable -eq $True } { return $True }
+
+        Default { return $False }
+    }
+    
+}
