@@ -968,6 +968,28 @@ function _CheckTpm {
     
 }
 
+function _checkResolution {
+    param (
+        
+        $Checkesolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
+
+    )
+
+    if ($CheckResolution.CurrentVerticalResolution -lt 720 -and $CheckResolution.CurrentHorizontalResolution -lt 1280) {
+
+        return $True
+        
+    }
+
+    else {
+        
+        return $False
+    }
+    
+}
+
+# affichage resultat dans le prompt
+
 $Titre = @"
 ------------------------------------------------------------------
 -                            Get-Windows11                       -
@@ -1122,4 +1144,18 @@ else {
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
     Write-Output "Votre machine n'est pas compatible DirectX 12"
 
+}
+
+if (_CheckResolution -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "Votre resolution est compatible Win 11"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre resolution n'est pas compatible Win 11"
+    
 }
