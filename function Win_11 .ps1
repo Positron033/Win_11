@@ -970,7 +970,7 @@ function _CheckTpm {
 
 function _checkResolution {
     param (
-        
+        # recuperation resolution 
         $CheckResolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
 
     )
