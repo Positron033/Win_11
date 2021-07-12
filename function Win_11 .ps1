@@ -878,7 +878,7 @@ function _CheckMem {
     Begin {
 
         # arrondi de la variable
-        $CheckMem = [math]::Round($CheckRam, 1)
+        $CheckMem = [math]::Round($CheckMem, 1)
 
     }
 
@@ -969,3 +969,33 @@ function _CheckTpm {
     }
     
 }
+
+$ResultArch = _CheckArch
+$ResultBoot = _CheckBoot
+$ResultNameCpu = _CheckNameCPU
+$ResultCpuCore = _CheckCPUCore
+$ResultCpuSpeed = _CheckCpuSpeed
+$ResultDirectx = _CheckDirectX
+$ResultMem = _CheckMem
+$ResultSecureBoot = _CheckSecureBoot
+$ResultDisk = _CheckDisk
+$ResultTPM = _CheckTpm
+
+$Titre = @"
+------------------------------------------------------------------
+-                            Get-Windows11                       -
+------------------------------------------------------------------
+
+Prérequis nécessaires à l'installation de Windows 11:
+- Un processeur 64 bits fonctionnant à une fréquence minimum de 1 gigahertz avec au moins 2 coeurs physiques.
+- 4 gigaoctets de RAM.
+- 64 gigaoctets de stockage.
+- Une carte mère compatible UEFI et Secure Boot.
+- Une puce TPM 2.0.
+- Une carte graphique compatible avec DirectX 12 ou version ultérieure avec pilote WDDM 2.0.
+- Un écran avec une résolution minimum de 1280 X 720 pixels avec une diagonale supérieure à 9 pouces.
+- Une connexion Internet et un compte Microsoft obligatoire pour l'installation de Windows 11 Famille.
+
+"@
+
+Write-Output $Titre
