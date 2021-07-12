@@ -970,17 +970,6 @@ function _CheckTpm {
     
 }
 
-$ResultArch = _CheckArch
-$ResultBoot = _CheckBoot
-$ResultNameCpu = _CheckNameCPU
-$ResultCpuCore = _CheckCPUCore
-$ResultCpuSpeed = _CheckCpuSpeed
-$ResultDirectx = _CheckDirectX
-$ResultMem = _CheckMem
-$ResultSecureBoot = _CheckSecureBoot
-$ResultDisk = _CheckDisk
-$ResultTPM = _CheckTpm
-
 $Titre = @"
 ------------------------------------------------------------------
 -                            Get-Windows11                       -
@@ -999,3 +988,140 @@ Prérequis nécessaires à l'installation de Windows 11:
 "@
 
 Write-Output $Titre
+
+if (_CheckArch -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline 
+    Write-Output "Votre Processeur est compatible 64 bit"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline 
+    Write-Output "Votre Processeur n'est pas compatible 64 bit"
+
+}
+
+if (_CheckCpuSpeed -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline 
+    Write-Output "Votre Processeur a une cadence suffisante"
+
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline 
+    Write-Output "Votre Processeur n'a pas une cadence suffisante"
+
+}
+
+if (_CheckNameCPU -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "Votre Processeur est dans la liste de compatibilite Win 11"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline 
+    Write-Output "Votre Processeur n'est pas dans la liste de compatibilite Win 11"
+
+}
+
+if (_CheckCPUCore -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "Votre machine a suffisament de Thread" 
+    
+}
+
+else {
+
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'as pas suffisament de Thread"
+}
+
+if (_CheckMem -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "Votre machine a suffisament de Memoire vive"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'as pas suffisament de memoire vive"
+
+}
+
+if (_CheckDisk -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "votre machine a suffisament d'espace disque"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'as pas d'espace disque suffisant"
+}
+
+if (_CheckBoot -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "votre machine est compatible UEFI"
+    
+}
+
+else {
+
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'est pas compatible UEFI"
+    
+}
+
+if (_CheckSecureBoot -eq $True) {
+    
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "votre machine est compatible Secureboot"
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'est pas compatible Secureboot"
+}
+
+if (_CheckTpm -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "votre machine est compatible TPM"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'est pas compatible TPM"
+
+}
+
+if (_CheckDirectX -eq $True) {
+
+    Write-Host "PASS " -ForegroundColor Green -NoNewline
+    Write-Output "votre machine est compatible Directx 12"
+    
+}
+
+else {
+    
+    Write-Host "FAIL " -ForegroundColor Red -NoNewline
+    Write-Output "Votre machine n'est pas compatible DirectX 12"
+
+}
