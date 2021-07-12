@@ -903,15 +903,15 @@ function _CheckSecureBoot {
 
     Param (
 
-        # recuperation secureboot dans bdr (a controler)
-        $CheckSecureBoot = (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
+        # recuperation secureboot dans bdr 
+        $CheckSecureBoot = (test-path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
 
     )
 
     Process {
 
 
-        if ($CheckSecureBoot -eq "UEFISecureBootEnabled") {
+        if ($CheckSecureBoot -eq $True -and (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State) -eq "UEFISecureBootEnabled" ) {
 
             return $True
             
@@ -963,7 +963,7 @@ function _CheckTpm {
     switch ($CheckTpm) {
 
         { $CheckTpm.TpmPresent -eq $True } { return $True }
-        { $CheckTpm.tpmEnable -eq $True } { return $True }
+        { $CheckTpm.TpmEnable -eq $True } { return $True }
 
         Default { return $False }
     }
