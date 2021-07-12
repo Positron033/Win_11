@@ -988,6 +988,8 @@ function _checkResolution {
     
 }
 
+Clear-Host
+
 # affichage resultat dans le prompt
 
 $Titre = @"
@@ -1007,7 +1009,7 @@ Prérequis nécessaires à l'installation de Windows 11:
 
 "@
 
-Write-Output $Titre
+Write-Output $Titre 
 
 if (_CheckArch -eq $True) {
 
