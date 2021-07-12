@@ -971,11 +971,11 @@ function _CheckTpm {
 function _checkResolution {
     param (
         
-        $Checkesolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
+        $CheckResolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
 
     )
 
-    if ($CheckResolution.CurrentVerticalResolution -lt 720 -and $CheckResolution.CurrentHorizontalResolution -lt 1280) {
+    if ($CheckResolution.CurrentVerticalResolution -gt 720 -and $CheckResolution.CurrentHorizontalResolution -gt 1280) {
 
         return $True
         
