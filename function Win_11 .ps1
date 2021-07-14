@@ -1013,7 +1013,7 @@ $Titre = @"
 -                            Get-Windows 11                      -
 ------------------------------------------------------------------
 
-Prerequis nécessaires à l'installation de Windows 11:
+Prerequis necessaires a l'installation de Windows 11:
 - Un processeur 64 bits fonctionnant à une frequence minimum de 1 gigahertz avec au moins 2 coeurs physiques.
 - 4 giga-octets de RAM.
 - 64 giga-octets de stockage.
