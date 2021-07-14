@@ -4,7 +4,8 @@ test la compatibilité d'un poste client avec win 11
  
 .DESCRIPTION
 Ce script permet de tester l'architecture processeur et de l'os, le type de bios, controle si le processeur est dans la liste des processeurs compatible avec Win 11, 
-le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de directx 12 et la resolution minimale pour win 11
+le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de directx 12 
+et la resolution ecran minimale pour win 11
 
 .PARAMETER  
 il doit etre executer en tant que administrateur
@@ -916,17 +917,10 @@ function _CheckMem {
 
 function _CheckSecureBoot {
 
-    Param (
-
-        # recuperation secureboot dans bdr 
-        $CheckSecureBoot = (test-path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State)
-
-    )
-
     Process {
 
-
-        if ($CheckSecureBoot -eq $True -and (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State) -eq "UEFISecureBootEnabled" ) {
+        # controle secure boot dans bdr
+        if ((test-path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State) -and (Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State) -eq "UEFISecureBootEnabled" ) {
 
             return $True
             
@@ -1153,7 +1147,7 @@ else {
 if (_CheckDirectX -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "votre machine est compatible Directx 12"
+    Write-Output "Votre machine est compatible Directx 12"
     
 }
 
