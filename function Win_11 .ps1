@@ -977,7 +977,7 @@ function _CheckTpm {
 
     switch ($CheckTpm) {
 
-        { $CheckTpm.TpmPresent -eq $True -and $CheckTpm.TpmEnable -eq $True } { return $True }
+        { $CheckTpm.TpmPresent -eq $True -and $CheckTpm.TpmEnabled -eq $True } { return $True }
         Default { return $False }
     }
     
