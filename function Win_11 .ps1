@@ -1014,7 +1014,7 @@ $Titre = @"
 ------------------------------------------------------------------
 
 Prerequis necessaires a l'installation de Windows 11:
-- Un processeur 64 bits fonctionnant à une frequence minimum de 1 gigahertz avec au moins 2 coeurs physiques.
+- Un processeur 64 bits fonctionnant a une frequence minimum de 1 gigahertz avec au moins 2 coeurs physiques.
 - 4 giga-octets de RAM.
 - 64 giga-octets de stockage.
 - Une carte mere compatible UEFI et Secure Boot.
