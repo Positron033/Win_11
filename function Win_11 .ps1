@@ -1020,7 +1020,7 @@ Prerequis necessaires a l'installation de Windows 11:
 - Une carte mere compatible UEFI et Secure Boot.
 - Une puce TPM 2.0.
 - Une carte graphique compatible avec DirectX 12 ou version ulterieure avec pilote WDDM 2.0.
-- Un ecran avec une resolution minimum de 1280 X 720 pixels avec une diagonale superieure à 9 pouces.
+- Un ecran avec une resolution minimum de 1280 X 720 pixels avec une diagonale superieure a 9 pouces.
 - Une connexion Internet et un compte Microsoft obligatoire pour l'installation de Windows 11 Famille.
 
 "@
