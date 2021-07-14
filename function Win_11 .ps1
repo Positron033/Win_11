@@ -1,3 +1,18 @@
+<#
+.SYNOPSIS
+test la compatibilité d'un poste client avec win 11
+ 
+.DESCRIPTION
+Ce script permet de tester l'architecture processeur et de l'os, le type de bios, controle si le processeur est dans la liste des processeurs compatible avec Win 11, 
+le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de directx 12 et la resolution minimale pour win 11
+
+.PARAMETER  
+il doit etre executer en tant que administrateur
+#>
+
+
+#Requires -Version 5.1;7.1
+
 function _CheckArch {
 
     Param (
@@ -970,6 +985,7 @@ function _CheckTpm {
 
 function _checkResolution {
     param (
+
         # recuperation resolution 
         $CheckResolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
 
@@ -998,9 +1014,9 @@ $Titre = @"
 ------------------------------------------------------------------
 
 Prérequis nécessaires à l'installation de Windows 11:
-- Un processeur 64 bits fonctionnant à une fréquence minimum de 1 gigahertz avec au moins 2 coeurs physiques.
-- 4 gigaoctets de RAM.
-- 64 gigaoctets de stockage.
+- Un processeur 64 bits fonctionnant à une fréquence minimum de 1 gigahertz avec au moins 2 cœurs physiques.
+- 4 giga-octets de RAM.
+- 64 giga-octets de stockage.
 - Une carte mère compatible UEFI et Secure Boot.
 - Une puce TPM 2.0.
 - Une carte graphique compatible avec DirectX 12 ou version ultérieure avec pilote WDDM 2.0.
@@ -1057,34 +1073,34 @@ else {
 if (_CheckCPUCore -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "Votre machine a suffisament de Thread" 
+    Write-Output "Votre machine a suffisamment de Thread" 
     
 }
 
 else {
 
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre machine n'as pas suffisament de Thread"
+    Write-Output "Votre machine n'as pas suffisamment de Thread"
 }
 
 if (_CheckMem -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "Votre machine a suffisament de Memoire vive"
+    Write-Output "Votre machine a suffisamment de RAM"
     
 }
 
 else {
     
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre machine n'as pas suffisament de memoire vive"
+    Write-Output "Votre machine n'as pas suffisamment de RAM"
 
 }
 
 if (_CheckDisk -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "votre machine a suffisament d'espace disque"
+    Write-Output "votre machine a suffisamment d'espace disque"
     
 }
 
@@ -1111,7 +1127,7 @@ else {
 if (_CheckSecureBoot -eq $True) {
     
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "votre machine est compatible Secureboot"
+    Write-Output "votre machine est compatible Secure boot"
 }
 
 else {
