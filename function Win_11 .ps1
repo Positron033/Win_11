@@ -1133,7 +1133,7 @@ if (_CheckSecureBoot -eq $True) {
 else {
     
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre machine n'est pas compatible Secureboot"
+    Write-Output "Votre machine n'est pas compatible Secureboot ou vérifier qu'il soit activer sur votre machine"
 }
 
 if (_CheckTpm -eq $True) {
