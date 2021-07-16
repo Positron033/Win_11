@@ -865,7 +865,7 @@ function _CheckCpuSpeed {
 function _CheckDirectX {    
     
     Process {
-
+        # controle de la presence de directx
         if (Test-Path C:\Windows\System32\D3D12Core.dll) {
 
             return $True
