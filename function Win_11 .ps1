@@ -863,10 +863,20 @@ function _CheckCpuSpeed {
 }
 
 function _CheckDirectX {    
+
+    begin {
+
+        # recuperation de la version de directx a partir de dxdiag dans un fichier temporaire
+        start-process -FilePath "C:\windows\system32\dxdiag.exe" -ArgumentList "/dontskip /whql:off /t $env:TEMP\dxdiag.txt"
+        $dxdiagInfo = (get-content -Path $env:TEMP\dxdiag.txt) 
+        $directx = $dxdiagInfo[16]
+
+    }
     
     Process {
+
         # controle de la presence de directx
-        if (Test-Path C:\Windows\System32\D3D12Core.dll) {
+        if ((test-path $env:TEMP\dxdiag.txt) -and ($directx.Contains('12')) -and (Test-Path C:\Windows\System32\D3D12Core.dll)) {
 
             return $True
             
@@ -876,8 +886,9 @@ function _CheckDirectX {
             
             return $False
 
-        }
-         
+        }     
+    
+
     }
     
 }
@@ -1172,4 +1183,4 @@ else {
     
 }
 
-$OUT = read-host "APPUYER SUR ENTER POUR SORTIR"
+Pause
