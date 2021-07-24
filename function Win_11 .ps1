@@ -19,9 +19,9 @@ function _CheckArch {
     Param (
 
         # architecture Processeur
-        $CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
+        $global:CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
         # architecture OS
-        $CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
+        $global:CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
 
     )
 
@@ -66,7 +66,7 @@ function _CheckNameCPU {
     Param(
 
         #recuperation du nom du Processeur
-        $CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
+        $global:CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
 
     )
 
@@ -808,7 +808,7 @@ function _CheckCPUCore {
     Param (
 
         # recuperation du nombres de coeur
-        $CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
+        $global:CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
 
     )
 
@@ -840,7 +840,7 @@ function _CheckCpuSpeed {
 
         # convertion de la vitesse Processeur
         $CheckCpuSpeed = $CheckCpuSpeed / 1000
-        $CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
+        $global:CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
 
     }
 
@@ -875,7 +875,7 @@ function _CheckDirectX {
     
     Process {
 
-        # controle de la presence de directx
+        # controle de la presence de directx et de la version
         if ((test-path $env:TEMP\dxdiag.txt) -and ($directx.Contains('12')) -and (Test-Path C:\Windows\System32\D3D12Core.dll)) {
 
             return $True
@@ -905,7 +905,7 @@ function _CheckMem {
     Begin {
 
         # arrondi de la variable
-        $CheckMem = [math]::Round($CheckMem, 1)
+        $global:CheckMem = [math]::Round($CheckMem, 1)
 
     }
 
@@ -952,7 +952,15 @@ function _CheckDisk {
 
         # recuperation taille disque
         $CheckDisk = ((Get-Disk | Where-Object IsSystem -eq True).Size) / 1gb
+        
     )
+
+    begin {
+
+        #conversion de la variable
+        $global:CheckDisk = [math]::Round($CheckDisk, 1)
+
+    }
 
     Process {
 
@@ -1182,5 +1190,22 @@ else {
     Write-Output "Votre resolution n'est pas compatible Win 11"
     
 }
+
+$INFOPC = @"
+
+CARACTERISTIQUE MACHINE:
+------------------------
+
+ARCHITECTURE PROCESSEUR: $checkarchcpu bits
+ARCHITECTURE OS: $checkarchos 
+PROCESSEUR: $checkname
+NB DE COEUR PROCESSEUR: $checkcpucores
+CADENCE PROCESSEUR: $checkcpuspeed Ghz
+CAPACITE MEMOIRE VIVE: $CheckMem Go
+CAPACITE DISQUE SYSTEME: $CheckDisk Go
+
+"@
+
+Write-Output $INFOPC
 
 Pause
