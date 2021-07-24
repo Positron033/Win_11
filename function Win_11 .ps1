@@ -1040,6 +1040,23 @@ Prerequis necessaires a l'installation de Windows 11:
 
 Write-Output $Titre 
 
+$INFOPC = @"
+
+CARACTERISTIQUE MACHINE:
+------------------------
+
+ARCHITECTURE PROCESSEUR: $checkarchcpu bits
+ARCHITECTURE OS: $checkarchos 
+PROCESSEUR: $checkname
+NB DE COEUR PROCESSEUR: $checkcpucores
+CADENCE PROCESSEUR: $checkcpuspeed Ghz
+CAPACITE MEMOIRE VIVE: $CheckMem Go
+CAPACITE DISQUE SYSTEME: $CheckDisk Go
+
+"@
+
+Write-Output $INFOPC
+
 if (_CheckArch -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline 
@@ -1190,22 +1207,5 @@ else {
     Write-Output "Votre resolution n'est pas compatible Win 11"
     
 }
-
-$INFOPC = @"
-
-CARACTERISTIQUE MACHINE:
-------------------------
-
-ARCHITECTURE PROCESSEUR: $checkarchcpu bits
-ARCHITECTURE OS: $checkarchos 
-PROCESSEUR: $checkname
-NB DE COEUR PROCESSEUR: $checkcpucores
-CADENCE PROCESSEUR: $checkcpuspeed Ghz
-CAPACITE MEMOIRE VIVE: $CheckMem Go
-CAPACITE DISQUE SYSTEME: $CheckDisk Go
-
-"@
-
-Write-Output $INFOPC
 
 Pause
