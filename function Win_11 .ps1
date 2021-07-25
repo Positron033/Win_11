@@ -868,14 +868,14 @@ function _CheckDirectX {
 
         # recuperation de la version de directx a partir de dxdiag dans un fichier temporaire
         start-process -FilePath "C:\windows\system32\dxdiag.exe" -ArgumentList "/dontskip /whql:off /t $env:TEMP\dxdiag.txt"
-        $dxdiagInfo = (get-content -Path $env:TEMP\dxdiag.txt)[16,80]
+        $dxdiagInfo = (get-content -Path $env:TEMP\dxdiag.txt)[16,78,80]
 
     }
 
     Process {
 
         # controle de la presence de directx et de la version
-        if (($dxdiagInfo[0].Contains('12')) -and ($dxdiagInfo[1].Contains('2.'))) {
+        if (($dxdiagInfo[0].Contains('12')) -and ($dxdiagInfo[1].Contains('2.') -or $dxdiagInfo[2].Contains('2.'))) {
 
             return $True
 
