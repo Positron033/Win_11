@@ -45,7 +45,7 @@ function _CheckBoot {
     Param(
 
         # recuperation du type de bios
-        $CheckBoot = $env:firmware_type
+        $global:CheckBoot = $env:firmware_type
 
     )
 
@@ -1210,6 +1210,7 @@ $INFOPC = @"
 CARACTERISTIQUE MACHINE:
 ------------------------
 
+TYPE DE FIRWARE : $Checkboot
 ARCHITECTURE PROCESSEUR: $checkarchcpu bits
 ARCHITECTURE OS: $checkarchos 
 PROCESSEUR: $checkname
