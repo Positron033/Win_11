@@ -1040,6 +1040,8 @@ Prerequis necessaires a l'installation de Windows 11:
 
 Write-Output $Titre 
 
+# affichage prompt info pc
+
 $INFOPC = @"
 
 CARACTERISTIQUE MACHINE:
