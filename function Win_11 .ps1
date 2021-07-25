@@ -995,7 +995,7 @@ function _CheckTpm {
 }
 
 function _checkResolution {
-    
+
     param (
 
         # recuperation resolution 
@@ -1217,7 +1217,7 @@ NB DE COEUR PROCESSEUR: $checkcpucores
 CADENCE PROCESSEUR: $checkcpuspeed Ghz
 CAPACITE MEMOIRE VIVE: $CheckMem Go
 CAPACITE DISQUE SYSTEME: $CheckDisk Go
-RESOLUTION VERTICAL : $resolutionverticale
+RESOLUTION VERTICALE : $resolutionverticale
 RESOLUTION HORIZONTALE : $resolutionhorizontale
 
 "@
