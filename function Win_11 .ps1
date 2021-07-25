@@ -868,7 +868,7 @@ function _CheckDirectX {
 
         # recuperation de la version de directx a partir de dxdiag dans un fichier temporaire
         start-process -FilePath "C:\windows\system32\dxdiag.exe" -ArgumentList "/dontskip /whql:off /t $env:TEMP\dxdiag.txt"
-        $dxdiagInfo = (get-content -Path $env:TEMP\dxdiag.txt)[16,78,80]
+        $dxdiagInfo = (get-content -Path $env:TEMP\dxdiag.txt)[16, 78, 80]
 
     }
 
@@ -995,22 +995,35 @@ function _CheckTpm {
 }
 
 function _checkResolution {
+    
     param (
 
         # recuperation resolution 
         $CheckResolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
-
+        
     )
 
-    if ($CheckResolution.CurrentVerticalResolution -gt 720 -and $CheckResolution.CurrentHorizontalResolution -gt 1280) {
+    begin {
 
-        return $True
-        
+        $global:resolutionverticale = $CheckResolution.CurrentVerticalResolution
+        $global:resolutionhorizontale = $CheckResolution.CurrentHorizontalResolution
+
     }
 
-    else {
+    process {
+
+        if ($resolutionverticale -gt 720 -and $resolutionhorizontale -gt 1280) {
+
+            return $True
         
-        return $False
+        }
+
+        else {
+        
+            return $False
+
+        }
+
     }
     
 }
@@ -1204,6 +1217,8 @@ NB DE COEUR PROCESSEUR: $checkcpucores
 CADENCE PROCESSEUR: $checkcpuspeed Ghz
 CAPACITE MEMOIRE VIVE: $CheckMem Go
 CAPACITE DISQUE SYSTEME: $CheckDisk Go
+RESOLUTION VERTICAL : $resolutionverticale
+RESOLUTION HORIZONTALE : $resolutionhorizontale
 
 "@
 
