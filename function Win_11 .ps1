@@ -5,7 +5,7 @@ test la compatibilité d'un poste client avec win 11
 .DESCRIPTION
 Ce script permet de tester l'architecture processeur et de l'os, le type de bios, controle si le processeur est dans la liste des processeurs compatible avec Win 11, 
 le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de directx 12 
-et la resolution ecran minimale pour win 11
+et la definition ecran minimale pour win 11
 
 .PARAMETER  
 il doit etre executer en tant que administrateur
@@ -998,7 +998,7 @@ function _checkResolution {
 
     param (
 
-        # recuperation resolution 
+        # recuperation definition
         $CheckResolution = (Get-CimInstance -ClassName CIM_VideoController)[0]
         
     )
@@ -1044,7 +1044,7 @@ Prerequis necessaires a l'installation de Windows 11:
 - Une carte mere compatible UEFI et Secure Boot.
 - Une puce TPM 2.0.
 - Une carte graphique compatible avec DirectX 12 ou version ulterieure avec pilote WDDM 2.0.
-- Un ecran avec une resolution minimum de 1280 X 720 pixels avec une diagonale superieure a 9 pouces.
+- Un ecran avec une definition minimum de 1280 X 720 pixels avec une diagonale superieure a 9 pouces.
 - Une connexion Internet et un compte Microsoft obligatoire pour l'installation de Windows 11 Famille.
 
 "@
@@ -1192,14 +1192,14 @@ else {
 if (_CheckResolution -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "Votre resolution est compatible Win 11"
+    Write-Output "Votre definition est compatible Win 11"
     
 }
 
 else {
     
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre resolution n'est pas compatible Win 11"
+    Write-Output "Votre definition n'est pas compatible Win 11"
     
 }
 
@@ -1218,8 +1218,8 @@ NB DE COEUR PROCESSEUR: $checkcpucores
 CADENCE PROCESSEUR: $checkcpuspeed Ghz
 CAPACITE MEMOIRE VIVE: $CheckMem Go
 CAPACITE DISQUE SYSTEME: $CheckDisk Go
-RESOLUTION VERTICALE : $resolutionverticale
-RESOLUTION HORIZONTALE : $resolutionhorizontale
+DEFINITION VERTICALE : $resolutionverticale
+DEFINITION HORIZONTALE : $resolutionhorizontale
 
 "@
 
