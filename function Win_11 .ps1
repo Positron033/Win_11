@@ -1,14 +1,14 @@
 <#
 .SYNOPSIS
-test la compatibilité d'un poste client avec win 11
+Ce script test la compatibilité d'un poste client avec win 11
  
 .DESCRIPTION
-Ce script permet de tester l'architecture processeur et de l'os, le type de bios, controle si le processeur est dans la liste des processeurs compatible avec Win 11, 
-le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de directx 12 
-et la definition ecran minimale pour win 11
+Ce script permet de tester l'architecture processeur et de l'os, le type de bios, controle si le processeur est dans la liste des processeurs compatibles avec Win 11, 
+le nombre de coeur du processeur, la quantité de memoire vive, l'espace disque système, la presence du secureboot, d'une puce tpm, la presence de DirectX 12 
+et la definition de l'ecran minimale pour win 11
 
 .PARAMETER  
-il doit etre executer en tant que administrateur
+Il doit etre executer en tant que administrateur
 #>
 
 
@@ -72,7 +72,7 @@ function _CheckNameCPU {
 
     Begin {
 
-        #liste des Processeurs compatible win 11
+        #liste des Processeurs compatibles win 11
         $list = @"
 AMD,AMD,3015e
 AMD,AMD,3020e
@@ -807,7 +807,7 @@ function _CheckCPUCore {
 
     Param (
 
-        # recuperation du nombres de coeur
+        # recuperation du nombre de coeurs
         $global:CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
 
     )
@@ -830,7 +830,7 @@ function _CheckCPUCore {
 
 function _CheckCpuSpeed {
 
-    # recuperation de la vitesse du Cpu
+    # recuperation de la vitesse du CPU
     Param (
 
         $CheckCpuSpeed = (Get-CimInstance -ClassName CIM_Processor).MaxClockSpeed
@@ -838,7 +838,7 @@ function _CheckCpuSpeed {
 
     Begin {
 
-        # convertion de la vitesse Processeur
+        # conversion de la vitesse processeur
         $CheckCpuSpeed = $CheckCpuSpeed / 1000
         $global:CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
 
@@ -874,7 +874,7 @@ function _CheckDirectX {
 
     Process {
 
-        # controle de la presence de directx et de la version
+        # controle de la presence de directx et de sa version
         if (($dxdiagInfo[0].Contains('12')) -and ($dxdiagInfo[1].Contains('2.') -or $dxdiagInfo[2].Contains('2.'))) {
 
             return $True
@@ -1030,7 +1030,7 @@ function _checkResolution {
 
 Clear-Host
 
-# affichage resultat dans le prompt
+# affichage du resultat dans le prompt
 
 $Titre = @"
 ------------------------------------------------------------------
@@ -1055,14 +1055,14 @@ Write-Output $Titre
 if (_CheckArch -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline 
-    Write-Output "Votre Processeur est compatible 64 bit"
+    Write-Output "Votre Processeur est compatible 64 bits"
     
 }
 
 else {
     
     Write-Host "FAIL " -ForegroundColor Red -NoNewline 
-    Write-Output "Votre Processeur n'est pas compatible 64 bit"
+    Write-Output "Votre Processeur n'est pas compatible 64 bits"
 
 }
 
@@ -1098,14 +1098,14 @@ else {
 if (_CheckCPUCore -eq $True) {
 
     Write-Host "PASS " -ForegroundColor Green -NoNewline
-    Write-Output "Votre machine a suffisamment de Thread" 
+    Write-Output "Votre machine a suffisamment de coeurs" 
     
 }
 
 else {
 
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre machine n'as pas suffisamment de Thread"
+    Write-Output "Votre machine n'as pas suffisamment de coeurs"
 }
 
 if (_CheckMem -eq $True) {
@@ -1158,7 +1158,7 @@ if (_CheckSecureBoot -eq $True) {
 else {
     
     Write-Host "FAIL " -ForegroundColor Red -NoNewline
-    Write-Output "Votre machine n'est pas compatible Secureboot ou verifiez qu'il soit active sur votre machine"
+    Write-Output "Votre machine n'est pas compatible Secureboot ou verifiez qu'il soit actif sur votre machine"
 }
 
 if (_CheckTpm -eq $True) {
@@ -1207,14 +1207,14 @@ else {
 
 $INFOPC = @"
 
-CARACTERISTIQUE MACHINE:
+CARACTERISTIQUES MACHINE:
 ------------------------
 
-TYPE DE FIRWARE : $Checkboot
+TYPE DE FIRMWARE : $Checkboot
 ARCHITECTURE PROCESSEUR: $checkarchcpu bits
 ARCHITECTURE OS: $checkarchos 
 PROCESSEUR: $checkname
-NB DE COEUR PROCESSEUR: $checkcpucores
+NB DE COEURS PROCESSEUR: $checkcpucores
 CADENCE PROCESSEUR: $checkcpuspeed Ghz
 CAPACITE MEMOIRE VIVE: $CheckMem Go
 CAPACITE DISQUE SYSTEME: $CheckDisk Go
