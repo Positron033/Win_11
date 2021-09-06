@@ -1226,3 +1226,5 @@ DEFINITION HORIZONTALE : $resolutionhorizontale
 Write-host $INFOPC -ForegroundColor Magenta
 
 Pause
+
+Remove-Item -Path  $env:TEMP\dxdiag.txt
