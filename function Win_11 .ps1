@@ -1227,4 +1227,5 @@ Write-host $INFOPC -ForegroundColor Magenta
 
 Pause
 
+#suppression du fichier temporaire
 Remove-Item -Path  $env:TEMP\dxdiag.txt
