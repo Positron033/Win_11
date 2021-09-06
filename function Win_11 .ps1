@@ -1049,7 +1049,7 @@ Prerequis necessaires a l'installation de Windows 11:
 
 "@
 
-Write-Output $Titre 
+Write-host $Titre -ForegroundColor Magenta
 
 
 if (_CheckArch -eq $True) {
@@ -1223,6 +1223,6 @@ DEFINITION HORIZONTALE : $resolutionhorizontale
 
 "@
 
-Write-Output $INFOPC
+Write-host $INFOPC -ForegroundColor Magenta
 
 Pause
