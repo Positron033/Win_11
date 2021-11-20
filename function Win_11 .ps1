@@ -12,7 +12,7 @@ Il doit etre executer en tant que administrateur
 #>
 
 
-#Requires -Version 5.1;7.1
+#Requires -Version 5.1 -RunAsAdministrator
 
 function _CheckArch {
 
