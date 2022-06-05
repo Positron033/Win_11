@@ -19,9 +19,9 @@ function _CheckArch {
     Param (
 
         # architecture Processeur
-        $global:CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
+        $script:CheckArchCPU = (Get-CimInstance -ClassName CIM_Processor).AddressWidth,
         # architecture OS
-        $global:CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
+        $script:CheckArchOS = (Get-CimInstance -ClassName CIM_OperatingSystem).OSArchitecture
 
     )
 
@@ -45,7 +45,7 @@ function _CheckBoot {
     Param(
 
         # recuperation du type de bios
-        $global:CheckBoot = $env:firmware_type
+        $script:CheckBoot = $env:firmware_type
 
     )
 
@@ -66,7 +66,7 @@ function _CheckNameCPU {
     Param(
 
         #recuperation du nom du Processeur
-        $global:CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
+        $script:CheckName = (Get-CimInstance -ClassName CIM_Processor).Name
 
     )
 
@@ -915,7 +915,7 @@ function _CheckCPUCore {
     Param (
 
         # recuperation du nombre de coeurs
-        $global:CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
+        $script:CheckCPUCores = (Get-CimInstance -ClassName CIM_Processor).NumberOfCores
 
     )
 
@@ -947,7 +947,7 @@ function _CheckCpuSpeed {
 
         # conversion de la vitesse processeur
         $CheckCpuSpeed = $CheckCpuSpeed / 1000
-        $global:CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
+        $script:CheckCpuSpeed = [math]::Round($CheckCpuSpeed, 1)
 
     }
 
@@ -1010,7 +1010,7 @@ function _CheckMem {
     Begin {
 
         # arrondi de la variable
-        $global:CheckMem = [math]::Round($CheckMem, 1)
+        $script:CheckMem = [math]::Round($CheckMem, 1)
 
     }
 
@@ -1063,7 +1063,7 @@ function _CheckDisk {
     begin {
 
         #conversion de la variable
-        $global:CheckDisk = [math]::Round($CheckDisk, 1)
+        $script:CheckDisk = [math]::Round($CheckDisk, 1)
 
     }
 
@@ -1112,8 +1112,8 @@ function _checkResolution {
 
     begin {
 
-        $global:resolutionverticale = $CheckResolution.CurrentVerticalResolution
-        $global:resolutionhorizontale = $CheckResolution.CurrentHorizontalResolution
+        $script:resolutionverticale = $CheckResolution.CurrentVerticalResolution
+        $script:resolutionhorizontale = $CheckResolution.CurrentHorizontalResolution
 
     }
 
